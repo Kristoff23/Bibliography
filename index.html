@@ -1,217 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>National Heroes of the Philippines</title>
-  <style>
-    /* RESET & BASE */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>National Heroes of the Philippines</title>
+<style>
+  /* RESET & BASE */
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+  html { scroll-behavior:smooth; }
+  body { overflow-x:hidden; color:#fff; background-color:#000; }
 
-    html {
-      scroll-behavior: smooth; /* enables smooth scrolling */
-    }
+  /* NAVBAR */
+  nav {
+    position:fixed; top:0; left:0; width:100%;
+    padding:15px 8%;
+    display:flex; justify-content:space-between; align-items:center;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    z-index:1000;
+  }
+  nav .logo h1 a { color:#fff; text-decoration:none; }
+  nav ul { display:flex; list-style:none; gap:20px; align-items:center; }
+  nav a { color:#fff; text-decoration:none; font-size:16px; transition:0.3s; }
+  nav a:hover { color:#ffd700; }
+  #searchInput { padding:5px 10px; border-radius:5px; border:none; font-size:14px; }
 
-    body {
-      overflow-x: hidden;
-      color: #fff;
-      background-color: #000;
-    }
+  /* MAIN SECTION */
+  .Section1 { min-height:100vh; background:url('Pic/bg.webp') center/cover no-repeat;
+              display:flex; flex-direction:column; align-items:center; justify-content:center;
+              text-align:center; }
+  .Section2 h1 { font-size:clamp(36px,8vw,80px); font-weight:700; margin-bottom:20px; text-shadow:2px 2px 5px rgba(0,0,0,0.6);}
+  .Section2 a { display:inline-block; padding:12px 40px; border:2px solid #fff; border-radius:50px; font-size:clamp(16px,3vw,24px);
+                color:#fff; text-decoration:none; transition:0.3s; }
+  .Section2 a:hover { background: rgba(255,255,255,0.2); transform:scale(1.05); }
 
-    /* ========== NAVBAR ========== */
-    nav {
-      position: fixed; /* stays on top even when scrolling */
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 15px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-    }
+  /* HEROES */
+  .heroes-section { background:linear-gradient(rgba(17,17,17,0.7), rgba(0,0,0,0.9)),
+                    url('pics heroes/bg.jpg') center/cover no-repeat;
+                    background-attachment:fixed;
+                    padding:120px 20px 100px;
+                    display:flex; flex-direction:column; align-items:center; }
+  .heroes-section h1 { font-size:clamp(32px,6vw,60px); margin-bottom:60px; text-shadow:2px 2px 5px rgba(0,0,0,0.6);}
+  .painting-container { display:flex; flex-direction:column; align-items:center; margin-bottom:100px; max-width:400px; }
+  .painting-frame { cursor:pointer; width:300px; height:400px; object-fit:cover; border:3px solid #fff; border-radius:10px; transition:transform 0.3s;}
+  .painting-frame:hover { transform:scale(1.05); }
+  .hero-name { margin-top:10px; color:#ffd700; font-size:18px; text-align:center; }
+  .painting-info { display:none; background-color: rgba(255,255,255,0.15); backdrop-filter:blur(10px);
+                    border-radius:10px; padding:20px; margin-top:20px; max-width:700px; text-align:left;
+                    color:#fff; font-size:18px; line-height:1.5; transition: all 0.3s ease; }
 
-    nav .logo h1 {
-      font-size: 22px;
-      color: #fff;
-      letter-spacing: 1px;
-    }
+  /* REFERENCE */
+  .reference {
+    background-color: #111;
+    padding: 60px 5%;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .reference h1 { font-size: clamp(30px, 5vw, 50px); margin-bottom: 30px; }
+  .reference p { max-width:800px; margin:0 auto; line-height:1.7; font-size: clamp(16px, 2vw, 20px); color:#ddd; }
 
-    nav .logo h1 a {
-      color: #fff;
-      text-decoration: none;
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 25px;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 16px;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #ffd700;
-    }
-
-    /* ========== MAIN SECTION ========== */
-    .Section1 {
-      min-height: 100vh;
-      background: url('Pic/bg.webp') center/cover no-repeat;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .Section2 {
-      margin-top: 80px; /* offset for sticky navbar */
-    }
-
-    .Section2 h1 {
-      font-size: clamp(36px, 8vw, 80px);
-      font-weight: 700;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
-    }
-
-    .Section2 a {
-      display: inline-block;
-      padding: 12px 40px;
-      border: 2px solid #fff;
-      border-radius: 50px;
-      font-size: clamp(16px, 3vw, 24px);
-      color: #fff;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .Section2 a:hover {
-      background: rgba(255,255,255,0.2);
-      transform: scale(1.05);
-    }
-
-    /* ========== HEROES SECTION ========== */
-    .heroes-section {
-      background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(0,0,0,0.9)),
-                  url('pics heroes/bg.jpg') center/cover no-repeat;
-      background-attachment: fixed;
-      padding: 120px 20px 100px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .heroes-section h1 {
-      text-align: center;
-      margin-bottom: 60px;
-      font-size: clamp(32px, 6vw, 60px);
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
-    }
-
-    .painting-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 100px;
-      width: 100%;
-      max-width: 1000px;
-    }
-
-    .painting-frame {
-      cursor: pointer;
-      width: 300px;
-      height: 400px;
-      object-fit: cover;
-      border: 3px solid #fff;
-      border-radius: 10px;
-      transition: transform 0.3s;
-    }
-
-    .painting-frame:hover {
-      transform: scale(1.05);
-    }
-
-    .painting-info {
-      display: none;
-      background-color: rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
-      border-radius: 10px;
-      padding: 20px;
-      margin-top: 20px;
-      max-width: 700px;
-      text-align: left;
-      color: #fff;
-      font-size: 18px;
-      line-height: 1.5;
-    }
-
-    .painting-frame.clicked + .painting-info {
-      display: block;
-    }
-
-    /* ========== REFERENCE SECTION ========== */
-    .reference {
-      background-color: #111;
-      padding: 120px 20px;
-      text-align: center;
-    }
-
-    .reference h1 {
-      font-size: clamp(30px, 5vw, 50px);
-      margin-bottom: 30px;
-    }
-
-    .reference p {
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.7;
-      font-size: 18px;
-      color: #ddd;
-    }
-
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-      nav ul {
-        gap: 10px;
-        font-size: 14px;
-      }
-
-      .painting-frame {
-        width: 250px;
-        height: 330px;
-      }
-
-      .painting-info {
-        font-size: 16px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .painting-frame {
-        width: 200px;
-        height: 260px;
-      }
-
-      .painting-info {
-        font-size: 14px;
-        padding: 15px;
-      }
-    }
-  </style>
+  /* Responsive */
+  @media(max-width:768px) { .painting-frame { width:250px; height:330px;} .painting-info { font-size:16px; } }
+  @media(max-width:480px) { .painting-frame { width:200px; height:260px;} .painting-info { font-size:14px; padding:15px; } }
+</style>
 </head>
 <body>
 
@@ -221,10 +73,13 @@
     <ul>
       <li><a href="#heroes">HEROES</a></li>
       <li><a href="#reference">REFERENCE</a></li>
+      <li>
+        <input type="text" id="searchInput" placeholder="Search Hero" onkeyup="searchHero()">
+      </li>
     </ul>
   </nav>
 
-  <!-- MAIN SECTION -->
+  <!-- MAIN -->
   <div class="Section1" id="home">
     <div class="Section2">
       <h1>National Heroes <br>of the Philippines</h1>
@@ -232,59 +87,219 @@
     </div>
   </div>
 
-  <!-- HEROES SECTION -->
+  <!-- HEROES -->
   <div class="heroes-section" id="heroes">
     <h1>Philippine Heroes</h1>
 
-    <!-- Jose Rizal -->
-    <div class="painting-container">
-      <img class="painting-frame" src="pics heroes/1.jpg" alt="Jose Rizal" onclick="toggleInfo(this)">
-      <div class="painting-info">
-        <h2>José Protacio Rizal Mercado y Alonso Realonda</h2>
-        <p><b>Born:</b> June 19, 1861</p>
-        <p>José Rizal was a writer, scholar, and patriot who played a significant role in the Philippine Revolution against Spanish rule. His novels "Noli Me Tangere" and "El Filibusterismo" inspired a sense of national identity and resistance among Filipinos.</p>
-      </div>
-    </div>
+   <!-- Apolinario Mabini -->
+<div class="painting-container" id="mabini">
+  <img class="painting-frame" src="Pic/1.png" alt="Apolinario Mabini" onclick="toggleInfo(this)">
+  <h2 class="hero-name">Apolinario Mabini y Maranan</h2>
+  <div class="painting-info">
+    <p><b>Born:</b> July 23, 1864 — Tanauan, Batangas, Captaincy General of the Philippines, Spanish Empire</p>
+    <p><b>Died:</b> May 13, 1903 (aged 38) — Manila, Philippine Islands, United States Administration</p>
+    <p><b>Cause of Death:</b> Cholera</p>
+    <p><b>Resting Place:</b> Mabini Shrine, Tanauan, Batangas</p>
+    <p><b>Other Names:</b> “Sublime Paralytic”, “Brains of the Revolution”</p>
+    <p><b>Alma Mater:</b> Colegio de San Juan de Letran (BA), University of Santo Tomas (Law)</p>
+    <p><b>Organizations:</b> Revolutionary Government of the Philippines</p>
+    <p><b>Notable Work:</b> <i>El Verdadero Decálogo</i> (1898)</p>
+    <p><b>Movement:</b> Philippine Revolution</p>
+    <p><b>Parents:</b> Inocencio Mabini (father) and Dionisia Maranan (mother)</p>
+    <br>
+    <p><b>Summary:</b><br>
+      Apolinario Mabini rose from humble origins to become one of the foremost intellectual architects of Philippine independence.
+      Despite being paralyzed from the waist down, he became the chief adviser to General Emilio Aguinaldo during the Philippine Revolution and the First Philippine Republic.
+      He drafted the decrees and constitution for the First Republic, guided Aguinaldo’s government, and defended the nation’s sovereignty in his writings and policies.
+      Even when captured and exiled to Guam by U.S. forces, he remained steadfast in his ideals.
+    </p>
+  </div>
+</div>
 
-    <!-- Apolinario Mabini -->
-    <div class="painting-container">
-      <img class="painting-frame" src="pics heroes/mabini.jpg" alt="Apolinario Mabini" onclick="toggleInfo(this)">
-      <div class="painting-info">
-        <h2>Apolinario Mabini y Maranan</h2>
-        <p><b>Born:</b> July 23, 1864 — Tanauan, Batangas, Captaincy General of the Philippines, Spanish Empire</p>
-        <p><b>Died:</b> May 13, 1903 (aged 38) — Manila, Philippine Islands, United States Administration</p>
-        <p><b>Cause of Death:</b> Cholera</p>
-        <p><b>Resting Place:</b> Mabini Shrine, Tanauan, Batangas</p>
-        <p><b>Other Names:</b> “Sublime Paralytic”, “Brains of the Revolution”</p>
-        <p><b>Alma Mater:</b> Colegio de San Juan de Letran (BA), University of Santo Tomas (Law)</p>
-        <p><b>Organizations:</b> Revolutionary Government of the Philippines</p>
-        <p><b>Notable Work:</b> <i>El Verdadero Decálogo</i> (1898)</p>
-        <p><b>Movement:</b> Philippine Revolution</p>
-        <p><b>Parents:</b> Inocencio Mabini (father) and Dionisia Maranan (mother)</p>
-        <br>
-        <p><b>Summary:</b><br>
-          Apolinario Mabini rose from humble origins to become one of the foremost intellectual architects of Philippine independence.
-          Despite being paralyzed from the waist down, he became the chief adviser to General Emilio Aguinaldo during the Philippine Revolution and the First Philippine Republic.
-          He drafted the decrees and constitution for the First Republic, guided Aguinaldo’s government, and defended the nation’s sovereignty in his writings and policies.
-          Even when captured and exiled to Guam by U.S. forces, he remained steadfast in his ideals.
-        </p>
-      </div>
-    </div>
+<!-- General Miguel Malvar y Carpio -->
+<div class="painting-container" id="malvar">
+  <img class="painting-frame" src="Pic/2.png" alt="General Miguel Malvar y Carpio" onclick="toggleInfo(this)">
+  <h2 class="hero-name">General Miguel Malvar y Carpio</h2>
+  <div class="painting-info">
+    <p><b>Born:</b> September 27, 1865 — Santo Tomas, Batangas, Captaincy General of the Philippines</p>
+    <p><b>Died:</b> October 13, 1911 (aged 46) — Santo Tomas, Batangas, Philippine Islands</p>
+    <p><b>Cause of Death:</b> Liver disease</p>
+    <p><b>Resting Place:</b> Malvar Shrine, Santo Tomas, Batangas</p>
+    <p><b>Other Names:</b> General Malvar</p>
+    <p><b>Alma Mater:</b> Colegio de San Juan de Letran</p>
+    <p><b>Organizations:</b> Katipunan; Revolutionary Army of the Philippines</p>
+    <p><b>Movement:</b> Philippine Revolution; Philippine–American War</p>
+    <p><b>Spouse:</b> Paula Maloles</p>
+    <p><b>Parents:</b> Maximo Malvar (father) and Tiburcia Carpio (mother)</p>
+    <br>
+    <p><b>Summary:</b><br>
+      Malvar fought bravely in Batangas and Laguna against Spanish and later American forces.
+      After Aguinaldo’s capture in 1901, Malvar continued the fight as Commander-in-Chief of
+      the remaining Filipino forces until his surrender in 1902. He is hailed as a symbol of
+      unwavering patriotism and sacrifice.
+    </p>
+  </div>
+</div>
+
+<!-- Timoteo Paez -->
+<div class="painting-container" id="paez">
+  <img class="painting-frame" src="Pic/3.png" alt="Timoteo Paez" onclick="toggleInfo(this)">
+  <h2 class="hero-name">Timoteo Paez</h2>
+  <div class="painting-info">
+    <p><b>Born:</b> August 22, 1861 — Tondo, Manila, Philippines</p>
+    <p><b>Died:</b> September 13, 1939 (aged 78) — Tondo, Manila, Philippines</p>
+    <br>
+    <p><b>Summary:</b><br>
+      Don Timoteo Paez came from a rich family in Malabon. He became an adviser of laws and was a skilled writer in both Spanish and Tagalog.  
+      He traveled to different parts of the world to study ways other countries improved livelihood for their citizens.  
+
+      When Dr. Jose Rizal organized the "La Liga Filipina," Timoteo Paez became his right hand and helped with the propagation of the organization. He also supported prominent Filipinos such as Marcelo H. del Pilar, Graciano Lopez Jaena, Andres Bonifacio, and other Katipuneros.  
+
+      Paez financially helped Rizal and del Pilar in Spain, assisted in publishing "La Solidaridad," and contributed to the formation of the Katipunan by Bonifacio. He suggested the celebration of Rizal's day, including a monument in his honor, and also advocated remembering Bonifacio's day.  
+
+      Public schools in Manila and Pasay, streets in Manila and other provinces, bear his name in tribute. Timoteo Paez was praised by Dr. Jose Rizal for his patriotism, honor, and exemplary character.
+    </p>
+  </div>
+</div>
+
+<!-- Pedro Alejandrino Paterno -->
+<div class="painting-container" id="paterno">
+  <img class="painting-frame" src="Pic/4.png" alt="Pedro Alejandrino Paterno" onclick="toggleInfo(this)">
+  <h2 class="hero-name">Pedro Alejandrino Paterno</h2>
+  <div class="painting-info">
+    <p><b>Born:</b> February 27, 1857 — Santa Cruz, Manila, Captaincy General of the Philippines</p>
+    <p><b>Died:</b> March 11, 1911 (aged 54) — Manila, Philippine Islands</p>
+    <p><b>Resting Place:</b> Manila North Cemetery</p>
+    <p><b>Alma Mater:</b> University of Santo Tomas; University of Madrid</p>
+    <p><b>Organizations:</b> Malolos Congress; Philippine Revolutionary Government</p>
+    <p><b>Notable Works:</b> <i>Ninay</i> (1885) — first Philippine novel; <i>La Familia Tagala</i> (1889)</p>
+    <p><b>Movement:</b> Propaganda Movement; Reform Movement</p>
+    <p><b>Spouse:</b> Luisa Plata</p>
+    <p><b>Parents:</b> Maximo Paterno (father), Carmen de Vera Ignacio (mother)</p>
+    <br>
+    <p><b>Summary:</b><br>
+      Educated in Spain, Paterno bridged Filipino and Spanish elites through literature and diplomacy.
+      He negotiated peace between Spain and Filipino revolutionaries, served in the Malolos Congress, and later joined the American colonial government.
+      Despite criticism for shifting political alliances, his intellectual and literary works marked an early Filipino cultural renaissance.
+    </p>
+  </div>
+</div>
+
+<!-- Tomás Pinpín -->
+<div class="painting-container" id="pinpin">
+  <img class="painting-frame" src="Pic/5.png" alt="Tomás Pinpín" onclick="toggleInfo(this)">
+  <h2 class="hero-name">Tomás Pinpín</h2>
+  <div class="painting-info">
+    <p><b>Born:</b> c. 1580 — Abucay, Bataan, Captaincy General of the Philippines</p>
+    <p><b>Died:</b> after 1648 (approx. age 68)</p>
+    <p><b>Resting Place:</b> Unknown</p>
+    <p><b>Occupation:</b> Printer, writer, publisher</p>
+    <p><b>Notable Work:</b> <i>Librong Pag-aaralan ng mga Tagalog ng Uicang Castilla</i> (1610)</p>
+    <p><b>Movement:</b> Early Colonial Printing Era</p>
+    <br>
+    <p><b>Summary:</b><br>
+      Pinpín learned the art of printing in the Dominican press of Abucay and became the first
+      native Filipino printer to author a book. His work preserved early Tagalog grammar and
+      language, marking the beginning of Filipino literature and journalism.
+    </p>
+  </div>
+</div>
+
+<!-- Panday Pira -->
+<div class="painting-container" id="panday-pira">
+  <img class="painting-frame" src="Pic/6.png" alt="Panday Pira" onclick="toggleInfo(this)">
+  <h2 class="hero-name">Panday Pira</h2>
+  <div class="painting-info">
+    <p><b>Born:</b> c. 1488 — Tondo, Manila, Luzon, Precolonial Philippines</p>
+    <p><b>Died:</b> 1576 (aged about 88) — Manila, Captaincy General of the Philippines</p>
+    <p><b>Occupation:</b> Blacksmith, cannon maker</p>
+    <p><b>Movement:</b> Precolonial Manila and Spanish Conquest Period</p>
+    <br>
+    <p><b>Summary:</b><br>
+      Panday Pira’s skill in metalworking made him a vital figure during the early days of Spanish colonization.
+      Initially serving local Muslim rulers, his cannons defended Manila before Spanish conquest.
+      The Spaniards later employed him to manufacture artillery, marking him as a pioneer of Filipino metallurgy and defense technology.
+    </p>
+  </div>
+</div>
+
+<!-- Mariano Ponce -->
+<div class="painting-container" id="mariano-ponce">
+  <img class="painting-frame" src="Pic/7.png" alt="Mariano Ponce" onclick="toggleInfo(this)">
+  <h2 class="hero-name">Mariano Ponce</h2>
+  <div class="painting-info">
+    <p><b>Born:</b> March 23, 1863 — Baliuag, Bulacan, Captaincy General of the Philippines</p>
+    <p><b>Died:</b> May 23, 1918 (aged 55) — Hong Kong</p>
+    <p><b>Resting Place:</b> Baliuag, Bulacan</p>
+    <p><b>Occupation:</b> Physician, journalist, diplomat</p>
+    <p><b>Alma Mater:</b> University of Santo Tomas; Universidad Central de Madrid</p>
+    <p><b>Organizations:</b> La Solidaridad; La Liga Filipina</p>
+    <p><b>Notable Works:</b> <i>Cartas Sobre la Revolución</i> (Letters on the Revolution)</p>
+    <p><b>Movement:</b> Propaganda Movement</p>
+    <p><b>Spouse:</b> Ticang Vda. de Ponce</p>
+    <p><b>Parents:</b> Mariano Ponce Sr. and Carmen Collantes</p>
+    <br>
+    <p><b>Summary:</b><br>
+      A staunch reformist, Ponce used his writings to expose Spanish abuses and advocate for
+      Filipino self-governance. He served as a diplomat for the revolutionary government in Japan,
+      establishing contacts to gain support for independence. His friendship with Rizal and
+      contributions to Philippine literature and foreign relations solidified his legacy as a key
+      intellectual of the revolution.
+    </p>
+  </div>
+</div>
+
+<!-- Purmassuri -->
+<div class="painting-container" id="purmassuri">
+  <img class="painting-frame" src="Pic/8.png" alt="Purmassuri" onclick="toggleInfo(this)">
+  <h2 class="hero-name">Purmassuri</h2>
+  <div class="painting-info">
+    <p><b>Title/Role:</b> Brave Princess of Sulu</p>
+    <p><b>Summary:</b><br>
+      A very beautiful princess from Sulu. She had a strong heart and dominant willpower with which she tried to bewitch the Spanish soldiers, leading them to their destruction.  
+
+      Siri Kala, a Moro chief, joined forces with Sigalo, another Moro chief, but they still could not attack the Spaniards who were well-armed. Purmassuri went to the barracks of the Spaniards, and the Spanish soldiers were bewitched by her beauty. She entertained them and created an opportunity for her forces.  
+
+      Siri Kala's and Sigalo's soldiers attacked the Spaniards, killing almost all except those left on the ship, who later revealed what happened.  
+
+      This story of Purmassuri shows that the country was never conquered without defense, and that women were always ready to contribute to their motherland.
+    </p>
+  </div>
+</div>
+
+    <!-- Add other heroes following the same structure -->
 
   </div>
 
-  <!-- REFERENCE SECTION -->
+  <!-- REFERENCE -->
   <div class="reference" id="reference">
     <h1>Reference</h1>
-    <p>All images and historical information are sourced from public domain archives and educational references about Philippine heroes.  
-    This website was created for educational purposes to honor the contributions of the nation's heroes.</p>
+    <p>
+      All images and historical information are sourced from public domain archives and educational references about Philippine heroes.  
+      This website was created for educational purposes to honor the contributions of the nation's heroes.
+    </p>
   </div>
 
   <script>
+    // Toggle info when hero image is clicked
     function toggleInfo(painting) {
-      painting.classList.toggle("clicked");
+      const info = painting.nextElementSibling.nextElementSibling; // skips hero-name
+      info.style.display = (info.style.display === "block") ? "none" : "block";
+      // Optionally, scroll into view
+      info.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+
+    // Search hero by name
+    function searchHero(){
+      let input = document.getElementById('searchInput').value.toLowerCase();
+      let heroes = document.querySelectorAll('.painting-container');
+      heroes.forEach(hero => {
+        let name = hero.querySelector('.hero-name').textContent.toLowerCase();
+        if(name.includes(input) && input !== ""){
+          hero.scrollIntoView({behavior:'smooth', block:'center'});
+        }
+      });
     }
   </script>
-
 </body>
 </html>
