@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museo De Filipinas - Homepage</title>
+    <style>
+        /* Reset and font */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: url('1 background main.webp'); /* 🔹 Replace with your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Section container */
+        .Section1 {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: brightness(0.9); /* optional for better text contrast */
+        }
+
+        /* Navbar */
+        nav {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 20px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        nav .logo h1 {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        nav ul li {
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        /* Main content */
+        .Section2 h1 {
+            font-size: clamp(36px, 8vw, 100px);
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .Section2 a {
+            text-decoration: none;
+            display: inline-block;
+            color: #fff;
+            background: transparent;
+            font-size: clamp(16px, 3vw, 24px);
+            border: 2px solid #fff;
+            padding: 10px 40px;
+            border-radius: 50px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            nav ul {
+                justify-content: center;
+            }
+            nav .logo h1 {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .Section2 h1 {
+                font-size: clamp(28px, 10vw, 60px);
+            }
+            .Section2 a {
+                padding: 8px 25px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Section -->
+    <div class="Section1">
+        <!-- Navbar -->
+        <nav>
+            <div class="logo">
+                <h1>Bibliography</h1>
+            </div>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="room.html">ROOM</a></li>
+                <li><a href="references.html">REFERENCE</a></li>
+            </ul>
+        </nav>
+
+        <!-- Centered Text -->
+        <div class="Section2">
+            <h1>National Heroes <br>of the Philippines</h1>
+            <a>Welcome!</a>
+        </div>
+    </div>
+
+</body>
+</html>
