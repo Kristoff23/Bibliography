@@ -1,145 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Museo De Filipinas - Homepage</title>
-    <style>
-        /* Reset and font */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>National Heroes of the Philippines</title>
+  <style>
+    /* RESET & BASE */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-        body {
-            position: relative;
-            min-height: 100vh;
-            overflow-x: hidden;
-            background-image: url('1 background main.webp'); /* 🔹 Replace with your image */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+    html {
+      scroll-behavior: smooth; /* enables smooth scrolling */
+    }
 
-        /* Section container */
-        .Section1 {
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            text-align: center;
-            backdrop-filter: brightness(0.9); /* optional for better text contrast */
-        }
+    body {
+      overflow-x: hidden;
+      color: #fff;
+      background-color: #000;
+    }
 
-        /* Navbar */
-        nav {
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding: 20px 8%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
+    /* ========== NAVBAR ========== */
+    nav {
+      position: fixed; /* stays on top even when scrolling */
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
 
-        nav .logo h1 {
-            color: #fff;
-            font-size: 20px;
-        }
+    nav .logo h1 {
+      font-size: 22px;
+      color: #fff;
+      letter-spacing: 1px;
+    }
 
-        nav ul {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+    nav .logo h1 a {
+      color: #fff;
+      text-decoration: none;
+    }
 
-        nav ul li {
-            list-style: none;
-        }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 16px;
-        }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
 
-        /* Main content */
-        .Section2 h1 {
-            font-size: clamp(36px, 8vw, 100px);
-            color: #fff;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-        }
+    nav a:hover {
+      color: #ffd700;
+    }
 
-        .Section2 a {
-            text-decoration: none;
-            display: inline-block;
-            color: #fff;
-            background: transparent;
-            font-size: clamp(16px, 3vw, 24px);
-            border: 2px solid #fff;
-            padding: 10px 40px;
-            border-radius: 50px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
-        }
+    /* ========== MAIN SECTION ========== */
+    .Section1 {
+      min-height: 100vh;
+      background: url('Pic/bg.webp') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            nav ul {
-                justify-content: center;
-            }
-            nav .logo h1 {
-                font-size: 18px;
-            }
-        }
+    .Section2 {
+      margin-top: 80px; /* offset for sticky navbar */
+    }
 
-        @media (max-width: 480px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-            .Section2 h1 {
-                font-size: clamp(28px, 10vw, 60px);
-            }
-            .Section2 a {
-                padding: 8px 25px;
-                font-size: 18px;
-            }
-        }
-    </style>
+    .Section2 h1 {
+      font-size: clamp(36px, 8vw, 80px);
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    }
+
+    .Section2 a {
+      display: inline-block;
+      padding: 12px 40px;
+      border: 2px solid #fff;
+      border-radius: 50px;
+      font-size: clamp(16px, 3vw, 24px);
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .Section2 a:hover {
+      background: rgba(255,255,255,0.2);
+      transform: scale(1.05);
+    }
+
+    /* ========== HEROES SECTION ========== */
+    .heroes-section {
+      background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(0,0,0,0.9)),
+                  url('pics heroes/bg.jpg') center/cover no-repeat;
+      background-attachment: fixed;
+      padding: 120px 20px 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .heroes-section h1 {
+      text-align: center;
+      margin-bottom: 60px;
+      font-size: clamp(32px, 6vw, 60px);
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    }
+
+    .painting-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 100px;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .painting-frame {
+      cursor: pointer;
+      width: 300px;
+      height: 400px;
+      object-fit: cover;
+      border: 3px solid #fff;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .painting-frame:hover {
+      transform: scale(1.05);
+    }
+
+    .painting-info {
+      display: none;
+      background-color: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+      max-width: 700px;
+      text-align: left;
+      color: #fff;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .painting-frame.clicked + .painting-info {
+      display: block;
+    }
+
+    /* ========== REFERENCE SECTION ========== */
+    .reference {
+      background-color: #111;
+      padding: 120px 20px;
+      text-align: center;
+    }
+
+    .reference h1 {
+      font-size: clamp(30px, 5vw, 50px);
+      margin-bottom: 30px;
+    }
+
+    .reference p {
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.7;
+      font-size: 18px;
+      color: #ddd;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      nav ul {
+        gap: 10px;
+        font-size: 14px;
+      }
+
+      .painting-frame {
+        width: 250px;
+        height: 330px;
+      }
+
+      .painting-info {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .painting-frame {
+        width: 200px;
+        height: 260px;
+      }
+
+      .painting-info {
+        font-size: 14px;
+        padding: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Main Section -->
-    <div class="Section1">
-        <!-- Navbar -->
-        <nav>
-            <div class="logo">
-                <h1>Bibliography</h1>
-            </div>
-            <ul>
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="about.html">ABOUT</a></li>
-                <li><a href="room.html">ROOM</a></li>
-                <li><a href="references.html">REFERENCE</a></li>
-            </ul>
-        </nav>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo"><h1><a href="#home">HOME</a></h1></div>
+    <ul>
+      <li><a href="#heroes">HEROES</a></li>
+      <li><a href="#reference">REFERENCE</a></li>
+    </ul>
+  </nav>
 
-        <!-- Centered Text -->
-        <div class="Section2">
-            <h1>National Heroes <br>of the Philippines</h1>
-            <a>Welcome!</a>
-        </div>
+  <!-- MAIN SECTION -->
+  <div class="Section1" id="home">
+    <div class="Section2">
+      <h1>National Heroes <br>of the Philippines</h1>
+      <a href="#heroes">Explore</a>
     </div>
+  </div>
+
+  <!-- HEROES SECTION -->
+  <div class="heroes-section" id="heroes">
+    <h1>Philippine Heroes</h1>
+
+    <!-- Jose Rizal -->
+    <div class="painting-container">
+      <img class="painting-frame" src="pics heroes/1.jpg" alt="Jose Rizal" onclick="toggleInfo(this)">
+      <div class="painting-info">
+        <h2>José Protacio Rizal Mercado y Alonso Realonda</h2>
+        <p><b>Born:</b> June 19, 1861</p>
+        <p>José Rizal was a writer, scholar, and patriot who played a significant role in the Philippine Revolution against Spanish rule. His novels "Noli Me Tangere" and "El Filibusterismo" inspired a sense of national identity and resistance among Filipinos.</p>
+      </div>
+    </div>
+
+    <!-- Apolinario Mabini -->
+    <div class="painting-container">
+      <img class="painting-frame" src="pics heroes/mabini.jpg" alt="Apolinario Mabini" onclick="toggleInfo(this)">
+      <div class="painting-info">
+        <h2>Apolinario Mabini y Maranan</h2>
+        <p><b>Born:</b> July 23, 1864 — Tanauan, Batangas, Captaincy General of the Philippines, Spanish Empire</p>
+        <p><b>Died:</b> May 13, 1903 (aged 38) — Manila, Philippine Islands, United States Administration</p>
+        <p><b>Cause of Death:</b> Cholera</p>
+        <p><b>Resting Place:</b> Mabini Shrine, Tanauan, Batangas</p>
+        <p><b>Other Names:</b> “Sublime Paralytic”, “Brains of the Revolution”</p>
+        <p><b>Alma Mater:</b> Colegio de San Juan de Letran (BA), University of Santo Tomas (Law)</p>
+        <p><b>Organizations:</b> Revolutionary Government of the Philippines</p>
+        <p><b>Notable Work:</b> <i>El Verdadero Decálogo</i> (1898)</p>
+        <p><b>Movement:</b> Philippine Revolution</p>
+        <p><b>Parents:</b> Inocencio Mabini (father) and Dionisia Maranan (mother)</p>
+        <br>
+        <p><b>Summary:</b><br>
+          Apolinario Mabini rose from humble origins to become one of the foremost intellectual architects of Philippine independence.
+          Despite being paralyzed from the waist down, he became the chief adviser to General Emilio Aguinaldo during the Philippine Revolution and the First Philippine Republic.
+          He drafted the decrees and constitution for the First Republic, guided Aguinaldo’s government, and defended the nation’s sovereignty in his writings and policies.
+          Even when captured and exiled to Guam by U.S. forces, he remained steadfast in his ideals.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- REFERENCE SECTION -->
+  <div class="reference" id="reference">
+    <h1>Reference</h1>
+    <p>All images and historical information are sourced from public domain archives and educational references about Philippine heroes.  
+    This website was created for educational purposes to honor the contributions of the nation's heroes.</p>
+  </div>
+
+  <script>
+    function toggleInfo(painting) {
+      painting.classList.toggle("clicked");
+    }
+  </script>
 
 </body>
 </html>
