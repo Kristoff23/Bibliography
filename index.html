@@ -41,23 +41,7 @@
   #searchInput { padding:5px 10px; border-radius:5px; border:none; font-size:14px; } 
   /* 41- search bar style */
 
-@media (max-width: 768px) {
-  nav {
-    padding: 10px 4%; /* smaller side padding for phones */
-    flex-direction: column; /* stack items vertically if needed */
-    gap: 10px; /* space between logo and links */
-  }
 
-  nav ul {
-    flex-wrap: wrap; /* allow items to move to the next line if needed */
-    justify-content: center; /* center links */
-  }
-
-  #searchInput {
-    width: 100%; /* make search bar fit properly on phones */
-    max-width: 250px; /* prevent it from becoming too large */
-  }
-}
   /* MAIN SECTION */
   .Section1 { min-height:100vh; 
     /*min-height: 100vh; → Ensures the section takes at least the full height of the viewport.*/
@@ -107,6 +91,113 @@
   /* Responsive */
   @media(max-width:768px) { .painting-frame { width:250px; height:330px;} .painting-info { font-size:16px; } } 
   @media(max-width:480px) { .painting-frame { width:200px; height:260px;} .painting-info { font-size:14px; padding:15px; } }
+
+>
+  /* Overall control '*',margin and padding removes spacing ensure default layout */
+  /* box-sizing:border-box  controls element’s width and height include its padding and border,
+   font-family:'Poppins', sans-serif; makes all font san-serif */
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+  html { scroll-behavior:smooth; } /* smooth scrolling for when clicking link that transfer you to different part of web */
+  body { overflow-x:hidden; color:#030000; background-color:#b37e7e; }
+/* 14- body control the body part; overflow prevents it to scroll horizontally;
+ color sets the text color, background-color sets the background color */
+
+  /* NAVIGATION AT THE TOP*/
+  nav {
+    position:fixed; top:0; left:0; width:100%; 
+    /* 21; make it fixed at the top;ensuring it is at the top; stretch out the full width of web page*/
+    padding:15px 8%; 
+    /* 22; padding control size of the nav , 15px top and bottom, 8% spacing at left and right */
+    display:flex; justify-content:space-between; align-items:center;
+    /* display: flex; → Turns the container into a flexbox, making child elements easy to align.
+      justify-content: space-between; → Places items at the start and end with equal space between them horizontally.
+      align-items: center; → Vertically centers items within the container. */
+    background: rgba(255, 177, 177, 0.7); /* control the flexbox color; semi-transparent background */
+    backdrop-filter: blur(10px); /* apply a blur effect to the area behind the nav */
+    z-index:1000; /* ensure the nav stays on top of other content */
+  }
+  nav .logo h1 a { color:#fafafa; text-decoration:none; } 
+  /* 32- control the logo color and remove underline */
+  nav .logo h1 a:hover { color:#000000; } /* change color when hover over at home button */
+  nav ul { display:flex; list-style:none; gap:20px; align-items:center; } 
+  /* flexbox for the ul or list ,
+  remove bullet points, gap control spacing between each li reference, heroes, search */
+  nav a { color:#ffffff; text-decoration:none; font-size:16px; transition:0.3s; }
+  /* link color, remove underline, font size, transition for hover effect */
+  nav a:hover { color:#ffd700; } /* change color when hover over at buttons */
+  #searchInput { padding:5px 10px; border-radius:5px; border:none; font-size:14px; } 
+  /* 41- search bar style */
+
+
+  /* MAIN SECTION */
+  .Section1 { min-height:100vh; 
+    /*min-height: 100vh; → Ensures the section takes at least the full height of the viewport.*/
+    background:url('Pic/bg.webp') center/cover no-repeat; /* Sets a background image.  
+    center → Centers the image.cover → Makes the image cover the whole section.*/
+    display:flex; /* display: flex; → Turns the section into a flex container. */
+    flex-direction:column; /* flex-direction: column; → Arranges child elements vertically. */
+    align-items:center; /*   Horizontally centers child elements inside the section. */
+    justify-content:center; /* Vertically centers child elements inside the section. */
+    text-align:center; } /* Centers the text inside child elements horizontally. */
+           
+  
+  .Section2 h1 { font-size:clamp(36px,8vw,80px); 
+    font-weight:700; margin-bottom:20px;  
+    text-shadow:2px 2px 5px rgba(0,0,0,0.6);}
+
+  .Section2 a { display:inline-block; padding:12px 40px; border:2px solid #fff; border-radius:50px; font-size:clamp(16px,3vw,24px);
+                color:#fff; text-decoration:none; transition:0.3s; }
+  .Section2 a:hover { background: rgba(255,255,255,0.2); transform:scale(1.05); }
+
+  /* HEROES */
+  .heroes-section { background:linear-gradient(rgba(17,17,17,0.7), rgba(0,0,0,0.9)),
+                    url('Pic/bg1.jpg') center/cover no-repeat;
+                    background-attachment:fixed;
+                    padding:120px 20px 100px;
+                    display:flex; flex-direction:column; align-items:center; }
+  .heroes-section h1 { font-size:clamp(32px,6vw,60px); margin-bottom:60px; text-shadow:2px 2px 5px rgba(0,0,0,0.6);}
+  .painting-container { display:flex; flex-direction:column; align-items:center; margin-bottom:100px; max-width:400px; }
+  .painting-frame { cursor:pointer; width:300px; height:400px; object-fit:cover; border:3px solid #fff; border-radius:10px; transition:transform 0.3s;}
+  .painting-frame:hover { transform:scale(1.05); }
+  .hero-name { margin-top:10px; color:#ffd700; font-size:18px; text-align:center; }
+  .painting-info { display:none; background-color: rgba(255,255,255,0.15); backdrop-filter:blur(10px);
+                    border-radius:10px; padding:20px; margin-top:20px; max-width:700px; text-align:left;
+                    color:#fff; font-size:18px; line-height:1.5; transition: all 0.3s ease; }
+
+  /* REFERENCE */
+  .reference {
+    background-color: #111;
+    padding: 60px 5%;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .reference h1 { font-size: clamp(30px, 5vw, 50px); margin-bottom: 30px; }
+  .reference p { max-width:800px; margin:0 auto; line-height:1.7; font-size: clamp(16px, 2vw, 20px); color:#ddd; }
+
+  /* CONTACT SECTION */
+  .contact {
+    background-color: #222;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  .contact h1 {
+    font-size: clamp(28px, 5vw, 45px);
+    color: #ffd700;
+    margin-bottom: 25px;
+  }
+  .contact p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  .contact .authors {
+    margin-top: 30px;
+  }
+  .contact .authors p {
+    margin: 8px 0;
+  }
+
 </style>
 </head>
 <body>
@@ -185,7 +276,172 @@
   </div>
 </div>
 
+<!-- Timoteo Paez -->
+<div class="painting-container" id="paez"> /
+  <img class="painting-frame" src="Pic/3.png" alt="Timoteo Paez" onclick="toggleInfo(this)">
+  <h2 class="hero-name">Timoteo Paez</h2>
+  <div class="painting-info">
+    <p><b>Born:</b> August 22, 1861 — Tondo, Manila, Philippines</p>
+    <p><b>Died:</b> September 13, 1939 (aged 78) — Tondo, Manila, Philippines</p>
+    <br>
+    <p><b>Summary:</b><br>
+      Don Timoteo Paez came from a rich family in Malabon. He became an adviser of laws and was a skilled writer in both Spanish and Tagalog.  
+      He traveled to different parts of the world to study ways other countries improved livelihood for their citizens.  
 
+      When Dr. Jose Rizal organized the "La Liga Filipina," Timoteo Paez became his right hand and helped with the propagation of the organization. He also supported prominent Filipinos such as Marcelo H. del Pilar, Graciano Lopez Jaena, Andres Bonifacio, and other Katipuneros.  
+
+      Paez financially helped Rizal and del Pilar in Spain, assisted in publishing "La Solidaridad," and contributed to the formation of the Katipunan by Bonifacio. He suggested the celebration of Rizal's day, including a monument in his honor, and also advocated remembering Bonifacio's day.  
+
+      Public schools in Manila and Pasay, streets in Manila and other provinces, bear his name in tribute. Timoteo Paez was praised by Dr. Jose Rizal for his patriotism, honor, and exemplary character.
+    </p>
+  </div>
+</div>
+
+<!-- Pedro Alejandrino Paterno -->
+<div class="painting-container" id="paterno">
+  <img class="painting-frame" src="Pic/4.png" alt="Pedro Alejandrino Paterno" onclick="toggleInfo(this)">
+  <h2 class="hero-name">Pedro Alejandrino Paterno</h2>
+  <div class="painting-info">
+    <p><b>Born:</b> February 27, 1857 — Santa Cruz, Manila, Captaincy General of the Philippines</p>
+    <p><b>Died:</b> March 11, 1911 (aged 54) — Manila, Philippine Islands</p>
+    <p><b>Resting Place:</b> Manila North Cemetery</p>
+    <p><b>Alma Mater:</b> University of Santo Tomas; University of Madrid</p>
+    <p><b>Organizations:</b> Malolos Congress; Philippine Revolutionary Government</p>
+    <p><b>Notable Works:</b> <i>Ninay</i> (1885) — first Philippine novel; <i>La Familia Tagala</i> (1889)</p>
+    <p><b>Movement:</b> Propaganda Movement; Reform Movement</p>
+    <p><b>Spouse:</b> Luisa Plata</p>
+    <p><b>Parents:</b> Maximo Paterno (father), Carmen de Vera Ignacio (mother)</p>
+    <br>
+    <p><b>Summary:</b><br>
+      Educated in Spain, Paterno bridged Filipino and Spanish elites through literature and diplomacy.
+      He negotiated peace between Spain and Filipino revolutionaries, served in the Malolos Congress, and later joined the American colonial government.
+      Despite criticism for shifting political alliances, his intellectual and literary works marked an early Filipino cultural renaissance.
+    </p>
+  </div>
+</div>
+
+<!-- Tomás Pinpín -->
+<div class="painting-container" id="pinpin">
+  <img class="painting-frame" src="Pic/5.png" alt="Tomás Pinpín" onclick="toggleInfo(this)">
+  <h2 class="hero-name">Tomás Pinpín</h2>
+  <div class="painting-info">
+    <p><b>Born:</b> c. 1580 — Abucay, Bataan, Captaincy General of the Philippines</p>
+    <p><b>Died:</b> after 1648 (approx. age 68)</p>
+    <p><b>Resting Place:</b> Unknown</p>
+    <p><b>Occupation:</b> Printer, writer, publisher</p>
+    <p><b>Notable Work:</b> <i>Librong Pag-aaralan ng mga Tagalog ng Uicang Castilla</i> (1610)</p>
+    <p><b>Movement:</b> Early Colonial Printing Era</p>
+    <br>
+    <p><b>Summary:</b><br>
+      Pinpín learned the art of printing in the Dominican press of Abucay and became the first
+      native Filipino printer to author a book. His work preserved early Tagalog grammar and
+      language, marking the beginning of Filipino literature and journalism.
+    </p>
+  </div>
+</div>
+
+<!-- Panday Pira -->
+<div class="painting-container" id="panday-pira">
+  <img class="painting-frame" src="Pic/6.png" alt="Panday Pira" onclick="toggleInfo(this)">
+  <h2 class="hero-name">Panday Pira</h2>
+  <div class="painting-info">
+    <p><b>Born:</b> c. 1488 — Tondo, Manila, Luzon, Precolonial Philippines</p>
+    <p><b>Died:</b> 1576 (aged about 88) — Manila, Captaincy General of the Philippines</p>
+    <p><b>Occupation:</b> Blacksmith, cannon maker</p>
+    <p><b>Movement:</b> Precolonial Manila and Spanish Conquest Period</p>
+    <br>
+    <p><b>Summary:</b><br>
+      Panday Pira’s skill in metalworking made him a vital figure during the early days of Spanish colonization.
+      Initially serving local Muslim rulers, his cannons defended Manila before Spanish conquest.
+      The Spaniards later employed him to manufacture artillery, marking him as a pioneer of Filipino metallurgy and defense technology.
+    </p>
+  </div>
+</div>
+
+<!-- Mariano Ponce -->
+<div class="painting-container" id="mariano-ponce">
+  <img class="painting-frame" src="Pic/7.png" alt="Mariano Ponce" onclick="toggleInfo(this)">
+  <h2 class="hero-name">Mariano Ponce</h2>
+  <div class="painting-info">
+    <p><b>Born:</b> March 23, 1863 — Baliuag, Bulacan, Captaincy General of the Philippines</p>
+    <p><b>Died:</b> May 23, 1918 (aged 55) — Hong Kong</p>
+    <p><b>Resting Place:</b> Baliuag, Bulacan</p>
+    <p><b>Occupation:</b> Physician, journalist, diplomat</p>
+    <p><b>Alma Mater:</b> University of Santo Tomas; Universidad Central de Madrid</p>
+    <p><b>Organizations:</b> La Solidaridad; La Liga Filipina</p>
+    <p><b>Notable Works:</b> <i>Cartas Sobre la Revolución</i> (Letters on the Revolution)</p>
+    <p><b>Movement:</b> Propaganda Movement</p>
+    <p><b>Spouse:</b> Ticang Vda. de Ponce</p>
+    <p><b>Parents:</b> Mariano Ponce Sr. and Carmen Collantes</p>
+    <br>
+    <p><b>Summary:</b><br>
+      A staunch reformist, Ponce used his writings to expose Spanish abuses and advocate for
+      Filipino self-governance. He served as a diplomat for the revolutionary government in Japan,
+      establishing contacts to gain support for independence. His friendship with Rizal and
+      contributions to Philippine literature and foreign relations solidified his legacy as a key
+      intellectual of the revolution.
+    </p>
+  </div>
+</div>
+
+<!-- Purmassuri -->
+<div class="painting-container" id="purmassuri">
+  <img class="painting-frame" src="Pic/8.png" alt="Purmassuri" onclick="toggleInfo(this)">
+  <h2 class="hero-name">Purmassuri</h2>
+  <div class="painting-info">
+    <p><b>Title/Role:</b> Brave Princess of Sulu</p>
+    <p><b>Summary:</b><br>
+      A very beautiful princess from Sulu. She had a strong heart and dominant willpower with which she tried to bewitch the Spanish soldiers, leading them to their destruction.  
+      Siri Kala, a Moro chief, joined forces with Sigalo, another Moro chief, but they still could not attack the Spaniards who were well-armed. Purmassuri went to the barracks of the Spaniards, and the Spanish soldiers were bewitched by her beauty. She entertained them and created an opportunity for her forces.  
+      Siri Kala's and Sigalo's soldiers attacked the Spaniards, killing almost all except those left on the ship, who later revealed what happened.  
+      This story of Purmassuri shows that the country was never conquered without defense, and that women were always ready to contribute to their motherland.
+    </p>
+  </div>
+</div>
+
+<!-- José Rizal -->
+<div class="painting-container" id="rizal">
+  <img class="painting-frame" src="Pic/9.png" alt="José Rizal" onclick="toggleInfo(this)">
+  <h2 class="hero-name">José Protasio Rizal Mercado y Alonso Realonda</h2>
+  <div class="painting-info">
+    <p><b>Born:</b> June 19, 1861 — Calamba, Laguna, Captaincy General of the Philippines</p>
+    <p><b>Died:</b> December 30, 1896 (aged 35) — Bagumbayan, Manila, Captaincy General of the Philippines</p>
+    <p><b>Cause of Death:</b> Execution by firing squad</p>
+    <p><b>Resting Place:</b> Rizal Monument, Manila</p>
+    <p><b>Other Names:</b> Pepe, José</p>
+    <p><b>Alma Mater:</b> Ateneo Municipal de Manila; University of Santo Tomas; Universidad Central de Madrid (MD)</p>
+    <p><b>Organizations:</b> La Solidaridad; La Liga Filipina</p>
+    <p><b>Notable Works:</b> <i>Noli Me Tángere</i> (1887); <i>El Filibusterismo</i> (1891)</p>
+    <p><b>Movement:</b> Propaganda Movement</p>
+    <p><b>Spouse:</b> Josephine Bracken (m. 1896)</p>
+    <p><b>Parents:</b> Francisco Rizal Mercado (father); Teodora Alonso Realonda (mother)</p>
+    <p><b>Relatives:</b> Saturnina Hidalgo, Paciano Rizal, Trinidad Rizal</p>
+    <br>
+    <p><b>Summary:</b><br>
+      Rizal’s novels and writings awakened Filipino nationalism and inspired the Philippine Revolution.
+      His execution by Spanish authorities made him a martyr for independence and the symbol of Filipino pride, intellect, and courage.
+    </p>
+  </div>
+</div>
+
+
+<!-- Margarita Roxas de Ayala -->
+<div class="painting-container" id="margarita-roxas">
+  <img class="painting-frame" src="Pic/10.png" alt="Margarita Roxas de Ayala" onclick="toggleInfo(this)">
+  <h2 class="hero-name">Margarita Roxas de Ayala</h2>
+  <div class="painting-info">
+    <p><b>Born:</b> May 24, 1826 — Binondo, Manila, Captaincy General of the Philippines</p>
+    <p><b>Died:</b> 1903 (aged 77) — Manila, Philippine Islands</p>
+    <p><b>Occupation:</b> Businesswoman, philanthropist</p>
+    <p><b>Spouse:</b> Antonio de Ayala</p>
+    <p><b>Parents:</b> Domingo Roxas (father), Maria de Castro (mother)</p>
+    <p><b>Movement:</b> Early Filipino Economic Development</p>
+    <br>
+    <p><b>Summary:</b><br>
+      Margarita managed the Roxas family’s haciendas and commercial enterprises after her husband’s death, expanding them into what became Ayala y Compañía (now Ayala Corporation). Her leadership laid the foundation for one of the Philippines’ longest-standing economic institutions.
+    </p>
+  </div>
+</div>
 
     <!-- repeat the format for adding new heroes -->
 
@@ -211,6 +467,19 @@
   </p>
 </div>
 
+<div class="contact" id="contact">
+    <h1>About Us</h1>
+    <p>This is about the National Heroes of the Philippines  Men and women who devoted their lives to securing freedom, justice, and advancement for the Filipino people are known as Philippine National Heroes.  Generations of people were motivated to keep fighting for equality and freedom by their bravery, wit, and patriotism, which helped to define the nation's identity. 
+
+ The purpose of this website is to commemorate their legacy, tell their tales, and inform readers and students about their historical contributions to the Philippines.  Biographies, accomplishments, and historical details about heroes who bravely defended our country, including Dr. José Rizal, Andres Bonifacio, Emilio Aguinaldo, Apolinario Mabini, Gabriela Silang, and many more, can be found here.
+
+By learning about their ideas and sacrifices, we hope to preserve their spirit and inspire all Filipinos to live with the same sense of purpose and patriotism.</p>
+    <div class="authors">
+      <p><b>Kristoff Abadiano</b> — <a href="mailto:kristoffabadiano934@gmail.com" style="color:#ffd700;">kristoff.abadiano@gmail.com</a></p>
+      <p><b>Christelle Morcilla</b> — <a href="mailto:christellemorcilla3@gmail.com" style="color:#ffd700;">christellemorcilla3@gmail.com</a></p>
+      <p><b>Kezia Nathalie</b> — <a href="mailto:kezia.nathalie@gmail.com" style="color:#ffd700;">kezia.nathalie@gmail.com</a></p>
+    </div>
+  </div>
 
   <script>
     // Toggle info when hero image is clicked
