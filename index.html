@@ -11,7 +11,7 @@
    font-family:'Poppins', sans-serif; makes all font san-serif */
   * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
   html { scroll-behavior:smooth; } /* smooth scrolling for when clicking link that transfer you to different part of web */
-  body { overflow-x:hidden; color:#030000; background-color:#ff7f7f; }
+  body { overflow-x:hidden; color:#030000; background-color:#b37e7e; }
 /* 14- body control the body part; overflow prevents it to scroll horizontally;
  color sets the text color, background-color sets the background color */
 
@@ -25,7 +25,7 @@
     /* display: flex; → Turns the container into a flexbox, making child elements easy to align.
       justify-content: space-between; → Places items at the start and end with equal space between them horizontally.
       align-items: center; → Vertically centers items within the container. */
-    background: rgba(214, 185, 185, 0.7); /* control the flexbox color; semi-transparent background */
+    background: rgba(255, 177, 177, 0.7); /* control the flexbox color; semi-transparent background */
     backdrop-filter: blur(10px); /* apply a blur effect to the area behind the nav */
     z-index:1000; /* ensure the nav stays on top of other content */
   }
@@ -64,7 +64,7 @@
 
   /* HEROES */
   .heroes-section { background:linear-gradient(rgba(17,17,17,0.7), rgba(0,0,0,0.9)),
-                    url('pics heroes/bg.jpg') center/cover no-repeat;
+                    url('Pic/bg1.jpg') center/cover no-repeat;
                     background-attachment:fixed;
                     padding:120px 20px 100px;
                     display:flex; flex-direction:column; align-items:center; }
@@ -89,7 +89,7 @@
   .reference p { max-width:800px; margin:0 auto; line-height:1.7; font-size: clamp(16px, 2vw, 20px); color:#ddd; }
 
   /* Responsive */
-  @media(max-width:768px) { .painting-frame { width:250px; height:330px;} .painting-info { font-size:16px; } }
+  @media(max-width:768px) { .painting-frame { width:250px; height:330px;} .painting-info { font-size:16px; } } 
   @media(max-width:480px) { .painting-frame { width:200px; height:260px;} .painting-info { font-size:14px; padding:15px; } }
 </style>
 </head>
@@ -170,7 +170,7 @@
 </div>
 
 <!-- Timoteo Paez -->
-<div class="painting-container" id="paez">
+<div class="painting-container" id="paez"> /
   <img class="painting-frame" src="Pic/3.png" alt="Timoteo Paez" onclick="toggleInfo(this)">
   <h2 class="hero-name">Timoteo Paez</h2>
   <div class="painting-info">
