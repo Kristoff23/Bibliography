@@ -1,35 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" /> <!-- specify character encoding , for universal compatibility -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- ensure proper scaling on different devices -->
 <title>National Heroes of the Philippines</title>
-<style>
-  /* RESET & BASE */
-  * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
-  html { scroll-behavior:smooth; }
-  body { overflow-x:hidden; color:#fff; background-color:#000; }
 
-  /* NAVBAR */
+<style>
+  /* Overall control '*',margin and padding removes spacing ensure default layout */
+  /* box-sizing:border-box  controls element’s width and height include its padding and border,
+   font-family:'Poppins', sans-serif; makes all font san-serif */
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+  html { scroll-behavior:smooth; } /* smooth scrolling for when clicking link that transfer you to different part of web */
+  body { overflow-x:hidden; color:#030000; background-color:#ff7f7f; }
+/* 14- body control the body part; overflow prevents it to scroll horizontally;
+ color sets the text color, background-color sets the background color */
+
+  /* NAVIGATION AT THE TOP*/
   nav {
-    position:fixed; top:0; left:0; width:100%;
-    padding:15px 8%;
+    position:fixed; top:0; left:0; width:100%; 
+    /* 21; make it fixed at the top;ensuring it is at the top; stretch out the full width of web page*/
+    padding:15px 8%; 
+    /* 22; padding control size of the nav , 15px top and bottom, 8% spacing at left and right */
     display:flex; justify-content:space-between; align-items:center;
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(10px);
-    z-index:1000;
+    /* display: flex; → Turns the container into a flexbox, making child elements easy to align.
+      justify-content: space-between; → Places items at the start and end with equal space between them horizontally.
+      align-items: center; → Vertically centers items within the container. */
+    background: rgba(214, 185, 185, 0.7); /* control the flexbox color; semi-transparent background */
+    backdrop-filter: blur(10px); /* apply a blur effect to the area behind the nav */
+    z-index:1000; /* ensure the nav stays on top of other content */
   }
-  nav .logo h1 a { color:#fff; text-decoration:none; }
-  nav ul { display:flex; list-style:none; gap:20px; align-items:center; }
-  nav a { color:#fff; text-decoration:none; font-size:16px; transition:0.3s; }
-  nav a:hover { color:#ffd700; }
-  #searchInput { padding:5px 10px; border-radius:5px; border:none; font-size:14px; }
+  nav .logo h1 a { color:#fafafa; text-decoration:none; } 
+  /* 32- control the logo color and remove underline */
+  nav .logo h1 a:hover { color:#000000; } /* change color when hover over at home button */
+  nav ul { display:flex; list-style:none; gap:20px; align-items:center; } 
+  /* flexbox for the ul or list ,
+  remove bullet points, gap control spacing between each li reference, heroes, search */
+  nav a { color:#ffffff; text-decoration:none; font-size:16px; transition:0.3s; }
+  /* link color, remove underline, font size, transition for hover effect */
+  nav a:hover { color:#ffd700; } /* change color when hover over at buttons */
+  #searchInput { padding:5px 10px; border-radius:5px; border:none; font-size:14px; } 
+  /* 41- search bar style */
+
 
   /* MAIN SECTION */
-  .Section1 { min-height:100vh; background:url('Pic/bg.webp') center/cover no-repeat;
-              display:flex; flex-direction:column; align-items:center; justify-content:center;
-              text-align:center; }
-  .Section2 h1 { font-size:clamp(36px,8vw,80px); font-weight:700; margin-bottom:20px; text-shadow:2px 2px 5px rgba(0,0,0,0.6);}
+  .Section1 { min-height:100vh; 
+    /*min-height: 100vh; → Ensures the section takes at least the full height of the viewport.*/
+    background:url('Pic/bg.webp') center/cover no-repeat; /* Sets a background image.  
+    center → Centers the image.cover → Makes the image cover the whole section.*/
+    display:flex; /* display: flex; → Turns the section into a flex container. */
+    flex-direction:column; /* flex-direction: column; → Arranges child elements vertically. */
+    align-items:center; /*   Horizontally centers child elements inside the section. */
+    justify-content:center; /* Vertically centers child elements inside the section. */
+    text-align:center; } /* Centers the text inside child elements horizontally. */
+           
+  
+  .Section2 h1 { font-size:clamp(36px,8vw,80px); 
+    font-weight:700; margin-bottom:20px;  
+    text-shadow:2px 2px 5px rgba(0,0,0,0.6);}
+
   .Section2 a { display:inline-block; padding:12px 40px; border:2px solid #fff; border-radius:50px; font-size:clamp(16px,3vw,24px);
                 color:#fff; text-decoration:none; transition:0.3s; }
   .Section2 a:hover { background: rgba(255,255,255,0.2); transform:scale(1.05); }
