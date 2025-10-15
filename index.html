@@ -91,6 +91,113 @@
   /* Responsive */
   @media(max-width:768px) { .painting-frame { width:250px; height:330px;} .painting-info { font-size:16px; } } 
   @media(max-width:480px) { .painting-frame { width:200px; height:260px;} .painting-info { font-size:14px; padding:15px; } }
+
+>
+  /* Overall control '*',margin and padding removes spacing ensure default layout */
+  /* box-sizing:border-box  controls element’s width and height include its padding and border,
+   font-family:'Poppins', sans-serif; makes all font san-serif */
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+  html { scroll-behavior:smooth; } /* smooth scrolling for when clicking link that transfer you to different part of web */
+  body { overflow-x:hidden; color:#030000; background-color:#b37e7e; }
+/* 14- body control the body part; overflow prevents it to scroll horizontally;
+ color sets the text color, background-color sets the background color */
+
+  /* NAVIGATION AT THE TOP*/
+  nav {
+    position:fixed; top:0; left:0; width:100%; 
+    /* 21; make it fixed at the top;ensuring it is at the top; stretch out the full width of web page*/
+    padding:15px 8%; 
+    /* 22; padding control size of the nav , 15px top and bottom, 8% spacing at left and right */
+    display:flex; justify-content:space-between; align-items:center;
+    /* display: flex; → Turns the container into a flexbox, making child elements easy to align.
+      justify-content: space-between; → Places items at the start and end with equal space between them horizontally.
+      align-items: center; → Vertically centers items within the container. */
+    background: rgba(255, 177, 177, 0.7); /* control the flexbox color; semi-transparent background */
+    backdrop-filter: blur(10px); /* apply a blur effect to the area behind the nav */
+    z-index:1000; /* ensure the nav stays on top of other content */
+  }
+  nav .logo h1 a { color:#fafafa; text-decoration:none; } 
+  /* 32- control the logo color and remove underline */
+  nav .logo h1 a:hover { color:#000000; } /* change color when hover over at home button */
+  nav ul { display:flex; list-style:none; gap:20px; align-items:center; } 
+  /* flexbox for the ul or list ,
+  remove bullet points, gap control spacing between each li reference, heroes, search */
+  nav a { color:#ffffff; text-decoration:none; font-size:16px; transition:0.3s; }
+  /* link color, remove underline, font size, transition for hover effect */
+  nav a:hover { color:#ffd700; } /* change color when hover over at buttons */
+  #searchInput { padding:5px 10px; border-radius:5px; border:none; font-size:14px; } 
+  /* 41- search bar style */
+
+
+  /* MAIN SECTION */
+  .Section1 { min-height:100vh; 
+    /*min-height: 100vh; → Ensures the section takes at least the full height of the viewport.*/
+    background:url('Pic/bg.webp') center/cover no-repeat; /* Sets a background image.  
+    center → Centers the image.cover → Makes the image cover the whole section.*/
+    display:flex; /* display: flex; → Turns the section into a flex container. */
+    flex-direction:column; /* flex-direction: column; → Arranges child elements vertically. */
+    align-items:center; /*   Horizontally centers child elements inside the section. */
+    justify-content:center; /* Vertically centers child elements inside the section. */
+    text-align:center; } /* Centers the text inside child elements horizontally. */
+           
+  
+  .Section2 h1 { font-size:clamp(36px,8vw,80px); 
+    font-weight:700; margin-bottom:20px;  
+    text-shadow:2px 2px 5px rgba(0,0,0,0.6);}
+
+  .Section2 a { display:inline-block; padding:12px 40px; border:2px solid #fff; border-radius:50px; font-size:clamp(16px,3vw,24px);
+                color:#fff; text-decoration:none; transition:0.3s; }
+  .Section2 a:hover { background: rgba(255,255,255,0.2); transform:scale(1.05); }
+
+  /* HEROES */
+  .heroes-section { background:linear-gradient(rgba(17,17,17,0.7), rgba(0,0,0,0.9)),
+                    url('Pic/bg1.jpg') center/cover no-repeat;
+                    background-attachment:fixed;
+                    padding:120px 20px 100px;
+                    display:flex; flex-direction:column; align-items:center; }
+  .heroes-section h1 { font-size:clamp(32px,6vw,60px); margin-bottom:60px; text-shadow:2px 2px 5px rgba(0,0,0,0.6);}
+  .painting-container { display:flex; flex-direction:column; align-items:center; margin-bottom:100px; max-width:400px; }
+  .painting-frame { cursor:pointer; width:300px; height:400px; object-fit:cover; border:3px solid #fff; border-radius:10px; transition:transform 0.3s;}
+  .painting-frame:hover { transform:scale(1.05); }
+  .hero-name { margin-top:10px; color:#ffd700; font-size:18px; text-align:center; }
+  .painting-info { display:none; background-color: rgba(255,255,255,0.15); backdrop-filter:blur(10px);
+                    border-radius:10px; padding:20px; margin-top:20px; max-width:700px; text-align:left;
+                    color:#fff; font-size:18px; line-height:1.5; transition: all 0.3s ease; }
+
+  /* REFERENCE */
+  .reference {
+    background-color: #111;
+    padding: 60px 5%;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .reference h1 { font-size: clamp(30px, 5vw, 50px); margin-bottom: 30px; }
+  .reference p { max-width:800px; margin:0 auto; line-height:1.7; font-size: clamp(16px, 2vw, 20px); color:#ddd; }
+
+  /* CONTACT SECTION */
+  .contact {
+    background-color: #222;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  .contact h1 {
+    font-size: clamp(28px, 5vw, 45px);
+    color: #ffd700;
+    margin-bottom: 25px;
+  }
+  .contact p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  .contact .authors {
+    margin-top: 30px;
+  }
+  .contact .authors p {
+    margin: 8px 0;
+  }
+
 </style>
 </head>
 <body>
@@ -110,14 +217,14 @@
   <!-- MAIN -->
   <div class="Section1" id="home">
     <div class="Section2">
-      <h1>National Heroes <br>of the Philippines</h1>
+      <h1 style="color: #ffffff;">National Heroes <br>of the Philippines</h1>
       <a href="#heroes">Explore</a>
     </div>
   </div>
 
   <!-- HEROES -->
   <div class="heroes-section" id="heroes">
-    <h1>Philippine Heroes</h1>
+    <h1 style="color: #ffffff;">Philippine Heroes</h1>
 
    <!-- Apolinario Mabini -->
 <div class="painting-container" id="mabini">
@@ -360,6 +467,15 @@
   </p>
 </div>
 
+<div class="contact" id="contact">
+    <h1>About Us</h1>
+    <p>We are students who created this website to honor the Philippine National Heroes and share their inspiring stories.</p>
+    <div class="authors">
+      <p><b>Kristoff Abadiano</b> — <a href="mailto:kristoffabadiano934@gmail.com" style="color:#ffd700;">kristoff.abadiano@gmail.com</a></p>
+      <p><b>Christelle Morcilla</b> — <a href="mailto:christellemorcilla3@gmail.com" style="color:#ffd700;">christellemorcilla3@gmail.com</a></p>
+      <p><b>Kezia Nathalie</b> — <a href="mailto:kezia.nathalie@gmail.com" style="color:#ffd700;">kezia.nathalie@gmail.com</a></p>
+    </div>
+  </div>
 
   <script>
     // Toggle info when hero image is clicked
